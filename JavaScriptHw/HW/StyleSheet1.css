@@ -1,0 +1,25 @@
+﻿body {
+}
+table {
+    border: blue 2px solid;
+    column-span: all
+}
+
+td {
+    border: coral 1px solid;
+}
+fieldset {
+    border: solid;
+    border-radius: 20px;
+    border-color: red;
+    width: 600px;
+}
+
+img {
+    width: 20px;
+}
+
+p {
+    font-size: 8px;
+    color: gray
+}

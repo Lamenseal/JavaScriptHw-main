@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>03eventHandlerMouseoverout.html</title>
+</head>
+<body>
+    <img id="idimg1" src="images/star.gif" />
+    <img id="idimg2" src="images/star.gif" />
+    <img id="idimg3" src="images/star.gif" />
+    <img id="idimg4" src="images/star.gif" />
+    <img id="idimg5" src="images/star.gif" />
+    <p id="p1">請給予星數評分</p>
+    <script>
+
+        let counts = ["idimg1", "idimg2", "idimg3", "idimg4", "idimg5"];
+        let decide = true;
+        for (let count of counts) {
+            document.getElementById(count).addEventListener("mouseover", mouseover);  
+            document.getElementById(count).addEventListener("mouseout", mouseout);
+            document.getElementById(count).addEventListener("dblclick", dblclick);
+            document.getElementById(count).addEventListener("click", click);
+        }
+        function mouseover() {
+            if (decide == true) {
+                let j = counts.indexOf(this.id);
+                for (let i = j; i >= 0; i--) {
+                    document.getElementById(counts[i]).src = "images/chngstar.gif";
+                }
+                document.getElementById("p1").innerText = "給予" + (j + 1) + "分"
+            }
+        }
+        function mouseout() {
+            if (decide == true) {
+                let j = counts.indexOf(this.id);
+                for (let i = j; i >= 0; i--) {
+                    document.getElementById(counts[i]).src = "images/star.gif";
+                }
+                document.getElementById("p1").innerText = "請給予星數評分"
+            }
+        }
+        function dblclick() {
+            decide = true;
+        }
+        function click() {
+            let j = counts.indexOf(this.id);
+            for (let i = j; i >= 0; i--) {
+                document.getElementById(counts[i]).src = "images/chngstar.gif";
+            }
+            document.getElementById("p1").innerText = "給予" + (j + 1) + "分"
+            decide = false;
+        }
+    </script>
+</body>
+</html>

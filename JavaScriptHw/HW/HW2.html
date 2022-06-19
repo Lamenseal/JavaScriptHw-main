@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="StyleSheet1.css" />
+    <title></title>    
+</head>
+<body>
+    <form name="FormCheck">
+        <fieldset>
+            <legend>Form Check</legend>
+            <label for="account">姓名:</label>
+            <input type="text" id="account" name="account" /><span id="idsp1"></span><br />
+
+            <p id="p1">(1.不可空白 2.至少兩個字以上 3.必須為全部中文字)</p>
+
+            <label for="pwd"><br>密碼:</label>
+            <input type="password" id="pwd" name="pwd" /><span id="idsp2"></span><br />
+
+            <p>1.不可空白 2.至少6個字且包含英數字、特殊字元[!@#$%^&*]</p>
+
+            <label for="dt"><br>日期:</label>
+            <input type="text" id="dt" name="dt" /><span id="idsp3"></span><br />
+
+            <p>格式:西元年/月/日(yyyy/mm/dd)</p>
+        </fieldset>
+        <script>
+            
+            let regName = new RegExp("(?=.*[\u4E00-\u9FFF]).{2}");
+            let regPassword = new RegExp("(?=.*[0-9])(?=.*[A-Za-z])(?=.*[~|!|@|#|$|%|^|&|*]).{6}");
+            let regDate = new RegExp("(?:19\\d{2}|20[01][0-9]|202[012])[/](?:0[1-9]|1[012])[/](?:0[1-9]|[12][0-9]|3[01])");
+            let changeName = function () {
+                if (regName.test(document.getElementById("account").value))
+                    document.getElementById("idsp1").innerHTML = "<img src='images/accept.png' />格式正確";
+                else
+                    document.getElementById("idsp1").innerHTML = "<img src='images/remove.png' />格式錯誤";
+
+            }
+            let changePwd = function () {
+                if (regPassword.test(document.getElementById("pwd").value))
+                    document.getElementById("idsp2").innerHTML = "<img src='images/accept.png' />格式正確";
+                else
+                    document.getElementById("idsp2").innerHTML = "<img src='images/remove.png' />格式錯誤";
+                
+            }
+            
+            let changeDt = function () {
+                if (regDate.test(document.getElementById("dt").value))
+                    document.getElementById("idsp3").innerHTML = "<img src='images/accept.png' />格式正確";
+                else {                    
+                    document.getElementById("idsp3").innerHTML = "<img src='images/remove.png' />格式錯誤";
+                }
+
+            }
+
+            console.log(regDate);
+            document.getElementById("account").addEventListener("change",changeName)
+            document.getElementById("pwd").addEventListener("change", changePwd)
+            document.getElementById("dt").addEventListener("change", changeDt)
+            
+        </script>
+    </form>
+</body>
+</html>
